@@ -77,7 +77,7 @@ export default async function Footer() {
           )}
           {isFilled.link(settings.data.facebook) && (
             <PrismicNextLink
-              field={settings.data.faacebook_}
+              field={settings.data.facebook}
               className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
               aria-label={settings.data.name + " on Facebook"}
             >
