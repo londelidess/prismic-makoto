@@ -2,7 +2,19 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur esse dolore mollit nisi fugiat incididunt ad dolore. Adipisicing nostrud incididunt exercitation voluptate ad eu minim laboris."
+						}
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]
