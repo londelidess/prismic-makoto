@@ -7,7 +7,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Model } from "@/slices/Hero/Model";
 
-export function Shapes() {///////////////////////////////////////////////////////////
+export function Shapes() {
   return (
     <div className="row-span-1 row-start-1 -mt-9 aspect-square  md:col-span-1 md:col-start-2 md:mt-0 md:mb-2">
       <Canvas
@@ -30,12 +30,12 @@ export function Shapes() {//////////////////////////////////////////////////////
             far={9}
           /> */}
         <ContactShadows
-          opacity={0.42}
+          opacity={1.5}
           scale={10}
           blur={1}
           far={10}
           resolution={256}
-          color="#000000"
+          color="rgba(255, 166, 0, 0.5)"
         />
 
         </group>
