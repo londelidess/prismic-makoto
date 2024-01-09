@@ -8,7 +8,7 @@ import * as THREE from "three";
 
 export function Model() {
   const [animationState, setAnimationState] = useState('Gesturing');
-  const animations = ['Gesturing','Typing'];
+  // const animations = ['Gesturing','Typing'];
 
   const group = useRef();
   const { nodes, materials } = useGLTF("models/6546e0fc444d953355fd7844.glb");
@@ -45,9 +45,9 @@ export function Model() {
   // });
 
   useEffect(() => {
-    actions[animationState].reset().fadeIn(0.5).play();
+    actions[animationState]?.reset().fadeIn(0.5).play();
     return () => {
-      actions[animationState].reset().fadeOut(0.5);
+      actions[animationState]?.reset().fadeOut(0.5);
     };
   }, [actions, animationState]);
 
