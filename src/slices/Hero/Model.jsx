@@ -1,34 +1,33 @@
 "use client";
 
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
+// import { useFrame} from "@react-three/fiber";
 import React, { useState, useRef, useEffect } from 'react';
+// import * as THREE from "three";
 
 useGLTF.preload("models/6546e0fc444d953355fd7844.glb");
 
 export function Model() {
   const [animationState, setAnimationState] = useState('Gesturing');
-  const group = useRef();
-  let nodes, materials, loadingError = false;
+  // const animations = ['Gesturing','Typing'];
 
-  const { animations: gesturingAnimation } = useFBX("animations/Arm Gesture.fbx");
+  const group = useRef();
+  const { nodes, materials } = useGLTF("models/6546e0fc444d953355fd7844.glb") ;
+
+  const { animations: gesturingAnimation } = useFBX(
+    "animations/Arm Gesture.fbx"
+  );
   const { animations: typingAnimation } = useFBX("animations/Typing.fbx");
+
   gesturingAnimation[0].name = "Gesturing";
   typingAnimation[0].name = "Typing";
 
-  const { actions } = useAnimations([gesturingAnimation[0], typingAnimation[0]], group);
+  const { actions } = useAnimations(
+    [gesturingAnimation[0], typingAnimation[0],],
+    group
+  );
 
-  const attemptLoadModel = async () => {
-    try {
-      const gltf = await import("models/6546e0fc444d953355fd7844.glb");
-      nodes = gltf.nodes;
-      materials = gltf.materials;
-      loadingError = false;
-    } catch (e) {
-      console.error("Error loading model:", e);
-      loadingError = true;
-      setTimeout(attemptLoadModel, 1000); // Retry after 1 second
-    }
-  };
+
 
   const updateAnimationForWindowSize = () => {
     const width = window.innerWidth;
@@ -36,29 +35,24 @@ export function Model() {
     setAnimationState(newAnimationState);
   };
 
+
   useEffect(() => {
-    attemptLoadModel();
-    updateAnimationForWindowSize();
-    window.addEventListener('resize', updateAnimationForWindowSize);
+    actions[animationState]?.reset().fadeIn(0.5).play();
     return () => {
-      window.removeEventListener('resize', updateAnimationForWindowSize);
+      actions[animationState]?.reset().fadeOut(0.5);
     };
+  }, [actions, animationState]);
+
+  useEffect(() => {
+    updateAnimationForWindowSize();
+
+    window.addEventListener('resize', updateAnimationForWindowSize);
+
+    return () => window.removeEventListener('resize', updateAnimationForWindowSize);
   }, []);
 
-  useEffect(() => {
-    if (!loadingError) {
-      actions[animationState]?.reset().fadeIn(0.5).play();
-      return () => {
-        actions[animationState]?.reset().fadeOut(0.5);
-      };
-    }
-  }, [actions, animationState, loadingError]);
-
-  if (loadingError) {
-    return <div>Loading model...</div>;
-  }
-
   return (
+
     <group ref={group} dispose={null}>
       {/* <group rotation-x={-Math.PI / 2}> */}
       <primitive object={nodes.Hips} />
