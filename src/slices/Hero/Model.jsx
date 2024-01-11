@@ -61,8 +61,9 @@ export function Model() {
   }, []);
 
   return (
+
     <group ref={group} dispose={null}>
-      <group rotation-x={-Math.PI / 2}>
+      {/* <group rotation-x={-Math.PI / 2}> */}
       <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"
@@ -138,6 +139,6 @@ export function Model() {
         morphTargetInfluences={nodes.Wolf3D_Body.morphTargetInfluences}
       />
     </group>
-    </group>
+    // </group>
   );
 }
