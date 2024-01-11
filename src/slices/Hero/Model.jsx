@@ -1,9 +1,9 @@
 "use client";
 
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
-import { useFrame} from "@react-three/fiber";
+// import { useFrame} from "@react-three/fiber";
 import React, { useState, useRef, useEffect } from 'react';
-import * as THREE from "three";
+// import * as THREE from "three";
 
 useGLTF.preload("models/6546e0fc444d953355fd7844.glb");
 
