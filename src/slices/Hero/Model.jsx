@@ -5,14 +5,14 @@ import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import React, { useState, useRef, useEffect } from 'react';
 // import * as THREE from "three";
 
-useGLTF.preload("public/models/6546e0fc444d953355fd7844.glb");
+useGLTF.preload("/models/6546e0fc444d953355fd7844.glb");
 
 export function Model() {
   const [animationState, setAnimationState] = useState('Gesturing');
   // const animations = ['Gesturing','Typing'];
 
   const group = useRef();
-  const { nodes, materials } = useGLTF("public/models/6546e0fc444d953355fd7844.glb") ;
+  const { nodes, materials } = useGLTF("/models/6546e0fc444d953355fd7844.glb") ;
 
   const { animations: gesturingAnimation } = useFBX(
     "animations/Arm Gesture.fbx"
