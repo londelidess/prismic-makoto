@@ -435,15 +435,15 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   facebook: prismic.LinkField /**
-   * Meata Title field in *Settings*
+   * Meta Title field in *Settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.meata_title
+   * - **API ID Path**: settings.meta_title
    * - **Tab**: SEO and Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
-  meata_title: prismic.KeyTextField;
+  meta_title: prismic.KeyTextField;
 
   /**
    * Meta Description field in *Settings*

@@ -77,10 +77,10 @@
       }
     },
     "SEO and Metadata": {
-      "meata_title": {
+      "meta_title": {
         "type": "Text",
         "config": {
-          "label": "Meata Title",
+          "label": "Meta Title",
           "placeholder": ""
         }
       },
