@@ -9,6 +9,7 @@ import { Content } from "@prismicio/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
 type ContentListProps = {
   items: Content.BlogPostDocument[] | Content.ProjectDocument[];
   contentType: Content.ContentIndexSlice["primary"]["content_type"];
@@ -132,6 +133,14 @@ export default function ContentList({
     });
   }, [contentImages]);
 
+  const sortedItems = items.sort((a, b) => {
+    const dateA = new Date(a.data.date as string);
+    const dateB = new Date(b.data.date as string);
+
+    return dateB.getTime() - dateA.getTime();
+  });
+
+console.log(sortedItems)
   return (
     <>
       <ul
@@ -139,7 +148,7 @@ export default function ContentList({
         className="grid border-b border-b-slate-100"
         onMouseLeave={onMouseLeave}
       >
-        {items.map((item, index) => (
+        {sortedItems.map((item, index) => (
           <li
             key={index}
             ref={(el) => (itemsRef.current[index] = el)}
